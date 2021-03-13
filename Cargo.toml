@@ -1,0 +1,39 @@
+[package]
+name    = "vfs-https"
+version = "0.1.0"
+authors = ["der-b <der-b@der-b.com>"]
+description = "Exposes a Virtual File Systems (VFS) via HTTPS"
+edition = "2018"
+license = "Apache-2.0"
+repository = "https://github.com/der-b/rust-vfs-https"
+readme = "Readme.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# please note: At the time of writing, the unit test does not work withe the current version of vfs (0.5.1)
+# you need to check out the head of the reposetory
+#vfs = { git = "https://github.com/manuel-woelker/rust-vfs" }
+vfs = "0.5.1"
+thiserror = "1.0"
+hyper = { version = "0.14.2", features = [ "server" ] }
+hyper-rustls = "0.22.1"
+rustls = "0.19.0"
+tokio = { version = "1.1.0", features = [ "io-std", "macros", "net", "rt-multi-thread" ] }
+tokio-rustls = "0.22.0"
+syn = "1.0.60"
+async-stream = "0.3.0"
+futures-util = { version = "0.3.12", default-features = false }
+reqwest = { version = "0.11", features = ["blocking", "cookies"] }
+serde  = { version = "1.0.123", features = ["derive"] }
+serde_json = "1.0.60"
+base64 = "0.13.0"
+rand = "0.8.3"
+chrono = "0.4.0"
+
+[dev-dependencies]
+# please note: At the time of writing, the unit test does not work withe the current version of vfs (0.5.1)
+# you need to check out the head of the reposetory
+#vfs = { git = "https://github.com/manuel-woelker/rust-vfs", features = [ "export-test-macros" ] }
+vfs = { version = "0.5.1", features = [ "export-test-macros" ] }
+lazy_static = "1.4.0"
